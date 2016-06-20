@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Search for a color.</p>
+
+<p><input type="text" id="myInput" oninput="refreshImages()"></p>
+
+<div id="images"></div>
+
+<script>
+//create new image element, and adds it to element
+function image(thisImg) {
+    var img = document.createElement("IMG");
+    img.src = "Colors/"+thisImg+".jpg";
+    document.getElementById('images').appendChild(img);
+}
+
+// display all colors initially
+var colors = ["black", "blue", "cyan", "green", "magenta", "orange", "pink", "purple", "red", "yellow"];
+for (i = 0; i < colors.length; i++) { 
+    image(colors[i]);
+}
+
+// refreshes image when searching for a color
+function refreshImages() {
+	// clear div
+	document.getElementById("images").innerHTML = "";
+
+	// get text in search bar
+	var input = document.getElementById('myInput').value;
+
+	// find all colors that contain these letters
+	for (i = 0; i < colors.length; i++) {
+    	if (colors[i].includes(input)){
+    		console.log(i + " worked");
+    		image(colors[i]);
+    	}
+	}
+}
+</script>
+
+</body>
+</html>
+
+    
